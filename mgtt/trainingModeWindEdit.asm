@@ -1,7 +1,8 @@
 #To be inserted at 8042f36c
 # Mario Golf: Toadstool Tour
-# in training mode, Z+X increases wind speed, and Z+Y decreases wind speed. No need to pause anymore
+# in training mode, Z+X increases wind speed, and Z+Y decreases wind speed
 
+# if not training mode skip
 cmpwi r9, 0x3
 bne SKIP
 
@@ -29,7 +30,6 @@ DIR:
 lis r9, 0x804d
 ori r9, r9, 0xfdf0
 lfs f13, 0x0(r9)
-
 
 # load direction addr
 lis r12, 0x804e
@@ -87,8 +87,6 @@ DONE:
 lis r11, 0x804e
 ori r11, r11, 0x6854
 stfs f12, 0x0(r11)
-
-CYCLE:
 
 
 SKIP:
