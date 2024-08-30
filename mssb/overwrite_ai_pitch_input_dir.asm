@@ -9,9 +9,9 @@
 ##### ACTUAL CODE #####
 
 ### uncomment and replace XXXX with the top and YYYY with bottom of the address you're reading from
-# lis r12, 0x8123 # (load byte from memory indicating which direction to go) 
-# ori r12, r12, 0x1111
-# lbz r12, 0x0(r12)
+lis r12, 0x8023 # (load byte from memory indicating which direction to go) 
+ori r12, r12, 0xda53
+lbz r12, 0x0(r12)
 
 
 ### check if inputs are legal
@@ -28,6 +28,7 @@ b CALL_FUNCTION # failsafe in case it somehow receives an invalid value
 
 LOAD_CUSTOM_INPUT:
   mr r3, r12 # skip the function call and just write the input to r3
+  b END
 
 
 
@@ -36,3 +37,5 @@ CALL_FUNCTION:
   ori r12, r12, 0xfd80
   mtctr r12
   bctrl
+
+END:
